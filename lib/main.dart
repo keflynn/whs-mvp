@@ -36,80 +36,74 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 30.0, horizontal: 50.0),
-                    child: SizedBox(
-                      height: 170.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 50.0),
+              child: SizedBox(
+                height: 170.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 85.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          CircleAvatar(
-                            radius: 85.0,
+                          Text(
+                            'Username',
+                            style: kSlightlyHeavyTextStyle,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  'Username',
-                                  style: kSlightlyHeavyTextStyle,
-                                ),
-                                Column(
-                                  children: [
-                                    Text('Visited'),
-                                    Text(
-                                      '12',
-                                      style: kLargeNumberTextStyle,
-                                    ),
-                                    Text('sites total'),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          Column(
+                            children: [
+                              Text('Visited'),
+                              Text(
+                                '12',
+                                style: kLargeNumberTextStyle,
+                              ),
+                              Text('sites total'),
+                            ],
                           ),
                         ],
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+            const Text(
+              'SITES I\'VE VISITED',
+            ),
+            Expanded(
+              child: ListView(
+                children: const [
+                  VisitedSiteListTile(
+                    siteName: 'Grenada',
+                    country: 'Spain',
                   ),
-                  const Text(
-                    'SITES I\'VE VISITED',
+                  VisitedSiteListTile(siteName: 'Paris', country: 'France'),
+                  VisitedSiteListTile(
+                      siteName: 'Yosemite', country: 'United States'),
+                  VisitedSiteListTile(siteName: 'Tian Shan', country: 'China'),
+                  VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
+                  VisitedSiteListTile(siteName: 'Tian Shan', country: 'China'),
+                  VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
+                  ListTile(
+                    title: Text('Paris'),
+                    subtitle: Text('     France'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
                   ),
-                  // ListView(
-                  //   shrinkWrap: false,
-                  //   children: const [
-                  //     VisitedSiteListTile(
-                  //       siteName: 'Grenada',
-                  //       country: 'Spain',
-                  //     ),
-                  //     VisitedSiteListTile(siteName: 'Paris', country: 'France'),
-                  //     VisitedSiteListTile(
-                  //         siteName: 'Yosemite', country: 'United States'),
-                  //     VisitedSiteListTile(
-                  //         siteName: 'Tian Shan', country: 'China'),
-                  //     VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
-                  //     ListTile(
-                  //       title: Text('Paris'),
-                  //       subtitle: Text('     France'),
-                  //       trailing: Icon(Icons.arrow_forward_ios_rounded),
-                  //     ),
-                  //     ListTile(
-                  //       title: Text('Yosemite'),
-                  //       subtitle: Text('     United States'),
-                  //       trailing: Icon(Icons.arrow_forward_ios_rounded),
-                  //     ),
-                  //   ],
-                  // ),
+                  ListTile(
+                    title: Text('Yosemite'),
+                    subtitle: Text('     United States'),
+                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  ),
                 ],
               ),
             ),
