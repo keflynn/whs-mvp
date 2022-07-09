@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utility/constants.dart';
-import '../components/visited-site-list-tile.dart';
-import '../components/icon-with-text-button.dart';
+import '../components/visited_site_list_tile.dart';
+import '../components/icon_with_text_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);

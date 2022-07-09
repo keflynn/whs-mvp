@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/profile-screen.dart';
-import 'screens/official-list-screen.dart';
+import 'screens/profile_screen.dart';
+import 'screens/official_list_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'WHS MVP',
       theme: ThemeData(
         primarySwatch: Colors.teal,
+        canvasColor: Colors.blueGrey.shade50,
       ),
       home: const OfficialListScreen(),
     );

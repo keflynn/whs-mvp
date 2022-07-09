@@ -9,3 +9,8 @@ const TextStyle kLargeNumberTextStyle = TextStyle(
   fontWeight: FontWeight.w600,
   fontSize: 20.0,
 );
+
+const TextStyle kExpansionPanelHeaderTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  color: Colors.teal,
+);
