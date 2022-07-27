@@ -14,3 +14,7 @@ const TextStyle kExpansionPanelHeaderTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.teal,
 );
+
+const TextStyle kRowDataDescriptorTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+);

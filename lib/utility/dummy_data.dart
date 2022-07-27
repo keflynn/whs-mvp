@@ -83,3 +83,6 @@ class DummyData {
     ]),
   ];
 }
+
+String dummyText =
+    '      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam elementum libero quis efficitur faucibus. Proin pellentesque vitae lorem non semper. Suspendisse convallis justo at orci feugiat, vel pulvinar lorem dictum. Donec laoreet sit amet lorem ac vehicula. Fusce ullamcorper aliquam interdum. Aliquam eu ante sed libero interdum aliquam. Proin sed ornare nisi. Fusce mattis urna augue, sit amet consectetur augue tristique ut. Sed vestibulum erat sed dignissim iaculis. Ut et sem eleifend, maximus elit id, porttitor massa. Praesent nec dui ut mauris feugiat vulputate. Praesent pretium vulputate enim. Morbi viverra metus eget justo ultricies tincidunt. Sed eget lacus a eros euismod eleifend. Pellentesque a velit in arcu imperdiet placerat a non odio. Quisque ullamcorper condimentum dolor, vel fermentum dui efficitur at.';

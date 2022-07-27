@@ -3,6 +3,7 @@ import 'package:section_view/section_view.dart';
 import '../utility/dummy_data.dart';
 import '../model/official_list_models.dart';
 import '../utility/constants.dart';
+import '../components/profile_photo_scaffold.dart';
 
 class OfficialListScreen extends StatefulWidget {
   const OfficialListScreen({Key? key}) : super(key: key);
@@ -16,24 +17,8 @@ class _OfficialListScreenState extends State<OfficialListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('World Heritage Sites'),
-        leading: BackButton(
-          color: Colors.white,
-          onPressed: () {},
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //TODO: navigate to profile page?
-        },
-        child: CircleAvatar(
-          backgroundColor: Colors.teal.shade100,
-          radius: 35.0,
-        ),
-      ),
+    return ProfilePhotoScaffold(
+      title: 'World Heritage Sites',
       body: SectionView<CountryGroupModel, CountryItemModel>(
         source: data,
         onFetchListData: (header) => header.countries,

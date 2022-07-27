@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whs_app_mvp/screens/site_detail_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/official_list_screen.dart';
+import 'screens/visit_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         canvasColor: Colors.blueGrey.shade50,
       ),
-      home: const OfficialListScreen(),
+      home: VisitDetailScreen(title: 'Visit to Grenada'),
     );
   }
 }
