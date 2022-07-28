@@ -11,10 +11,11 @@ class AddVisitScreen extends StatefulWidget {
 }
 
 class _AddVisitScreenState extends State<AddVisitScreen> {
+  final notesScrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     final date = DateTime.now();
-    final notesScrollController = ScrollController();
 
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +38,7 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
             child: Column(
               children: [
                 Text(
-                  'Add a Site Visit to',
+                  'Add a Visit to',
                   style: TextStyle(
                     fontSize: 30.0,
                     color: Colors.teal.shade800,
