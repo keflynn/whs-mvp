@@ -3,6 +3,7 @@ import 'package:whs_app_mvp/screens/site_detail_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/official_list_screen.dart';
 import 'screens/visit_screen.dart';
+import 'screens/add_visit_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         canvasColor: Colors.blueGrey.shade50,
       ),
-      home: VisitDetailScreen(title: 'Visit to Grenada'),
+      home: AddVisitScreen(),
+      //home: VisitDetailScreen(title: 'Visit to Grenada'),
     );
   }
 }

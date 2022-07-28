@@ -18,3 +18,10 @@ const TextStyle kExpansionPanelHeaderTextStyle = TextStyle(
 const TextStyle kRowDataDescriptorTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
+
+TextStyle kFormFieldLabelTextStyle = TextStyle(
+  fontSize: 15.0,
+  color: Colors.blueGrey.shade700,
+  decoration: TextDecoration.none,
+  fontWeight: FontWeight.normal,
+);
