@@ -15,7 +15,9 @@ class ProfilePhotoScaffold extends StatelessWidget {
         title: Text(title),
         leading: BackButton(
           color: Colors.white,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,

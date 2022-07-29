@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class IconWithTextButton extends StatelessWidget {
-  const IconWithTextButton({Key? key, required this.icon, required this.text})
+  const IconWithTextButton(
+      {Key? key,
+      required this.icon,
+      required this.text,
+      required this.pressAction})
       : super(key: key);
 
   final IconData icon;
   final String text;
+  final void Function() pressAction;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class IconWithTextButton extends StatelessWidget {
                 ? Colors.teal.shade400
                 : Colors.teal.shade300),
       ),
-      onPressed: () {},
+      onPressed: pressAction,
       child: Row(
         children: [
           Icon(

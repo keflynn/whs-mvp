@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:section_view/section_view.dart';
+import 'package:whs_app_mvp/screens/site_detail_screen.dart';
 import '../utility/dummy_data.dart';
 import '../model/official_list_models.dart';
 import '../utility/constants.dart';
 import '../components/profile_photo_scaffold.dart';
+import './screen_arguments/site_detail_screen_arguments.dart';
 
 class OfficialListScreen extends StatefulWidget {
   const OfficialListScreen({Key? key}) : super(key: key);
+
+  static const String id = 'officialList';
 
   @override
   State<OfficialListScreen> createState() => _OfficialListScreenState();
@@ -41,9 +45,23 @@ class _OfficialListScreenState extends State<OfficialListScreen> {
                 value: itemData.isExpanded,
                 headerBuilder: (context, bool isExpanded) {
                   return ListTile(
-                    title: Text(
-                      '    ${itemData.name}',
-                      style: kExpansionPanelHeaderTextStyle,
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '    ${itemData.name}',
+                          style: kExpansionPanelHeaderTextStyle,
+                        ),
+                        Text(
+                          itemData.sites.isNotEmpty
+                              ? '${itemData.sites.length}'
+                              : '',
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },
@@ -68,7 +86,16 @@ class _OfficialListScreenState extends State<OfficialListScreen> {
                             icon: Icon(Icons.photo_camera_outlined),
                             splashRadius: 25.0,
                             splashColor: Colors.teal.shade700,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                SiteDetailExtractArgumentsScreen.id,
+                                arguments: SiteDetailScreenArguments(
+                                  title: site.name,
+                                  country: itemData.name,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       )
@@ -82,27 +109,27 @@ class _OfficialListScreenState extends State<OfficialListScreen> {
       ),
     );
   }
-}
 
-SectionViewHeaderBuilder<T> getHeaderBuilder<T>(
-    String Function(T data) fetchAlphabet,
-    {Color? bkColor,
-    TextStyle? style}) {
-  return (BuildContext context, T headerData, int headerIndex) {
-    return Container(
-      color: bkColor ?? const Color(0xFFF3F4F5),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-        child: Column(
-          children: [
-            Text(
-              fetchAlphabet(headerData),
-              style: style ??
-                  const TextStyle(fontSize: 18, color: Color(0xFF767676)),
-            ),
-          ],
+  SectionViewHeaderBuilder<T> getHeaderBuilder<T>(
+      String Function(T data) fetchAlphabet,
+      {Color? bkColor,
+      TextStyle? style}) {
+    return (BuildContext context, T headerData, int headerIndex) {
+      return Container(
+        color: bkColor ?? const Color(0xFFF3F4F5),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+          child: Column(
+            children: [
+              Text(
+                fetchAlphabet(headerData),
+                style: style ??
+                    const TextStyle(fontSize: 18, color: Color(0xFF767676)),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  };
+      );
+    };
+  }
 }

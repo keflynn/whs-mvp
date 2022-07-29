@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:whs_app_mvp/screens/screen_arguments/site_detail_screen_arguments.dart';
 import '../components/text_input_area.dart';
 import '../components/large_text_button.dart';
 import '../utility/constants.dart';
+import './screen_arguments/site_detail_screen_arguments.dart';
 
 class AddVisitScreen extends StatefulWidget {
   const AddVisitScreen({Key? key}) : super(key: key);
+
+  static const String id = 'addVisit';
 
   @override
   State<AddVisitScreen> createState() => _AddVisitScreenState();
@@ -16,19 +20,13 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
   @override
   Widget build(BuildContext context) {
     final date = DateTime.now();
+    final args =
+        ModalRoute.of(context)!.settings.arguments as SiteDetailScreenArguments;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade100,
         elevation: 0,
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Cancel',
-            ),
-          ),
-        ],
       ),
       backgroundColor: Colors.teal.shade100,
       body: SafeArea(
@@ -46,7 +44,7 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                   ),
                 ),
                 Text(
-                  'SITE SHORT NAME',
+                  args.title.toUpperCase(),
                   style: TextStyle(
                     fontSize: 35.0,
                     color: Colors.teal.shade900,
@@ -140,7 +138,9 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                   child: Center(
                     child: LargeTextButton(
                       title: 'Add Visit',
-                      pressAction: () {},
+                      pressAction: () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
                 ),

@@ -4,9 +4,12 @@ import '../components/text_input_area.dart';
 import '../components/large_text_button.dart';
 import '../components/icon_rating_row.dart';
 import '../utility/constants.dart';
+import './screen_arguments/site_detail_screen_arguments.dart';
 
 class AddReviewScreen extends StatefulWidget {
   const AddReviewScreen({Key? key}) : super(key: key);
+
+  static const String id = 'addReview';
 
   @override
   State<AddReviewScreen> createState() => _AddReviewScreenState();
@@ -18,18 +21,13 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as SiteDetailScreenArguments;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade100,
         elevation: 0,
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Cancel',
-            ),
-          ),
-        ],
       ),
       backgroundColor: Colors.teal.shade100,
       body: SafeArea(
@@ -47,7 +45,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                   ),
                 ),
                 Text(
-                  'SITE SHORT NAME',
+                  args.title.toUpperCase(),
                   style: TextStyle(
                     fontSize: 35.0,
                     color: Colors.teal.shade900,
@@ -67,7 +65,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'ECOLOGICAL RATING:',
+                            'NATURAL RATING:',
                             style: kFormFieldLabelTextStyle,
                           ),
                           IconRatingRow(
@@ -138,7 +136,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                   child: Center(
                     child: LargeTextButton(
                       title: 'Add Review',
-                      pressAction: () {},
+                      pressAction: () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
                 ),

@@ -82,6 +82,39 @@ class DummyData {
       ),
     ]),
   ];
+
+  static List<Visit> dummyVisits = [
+    Visit(
+        title: 'May 2013',
+        siteName: 'Italia',
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        companions: 'Mom'),
+    Visit(
+        title: 'December 2010',
+        siteName: 'Toledo',
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        companions: 'Amy',
+        journalNotes: 'Lorem ipsum sit amet dolor...'),
+  ];
+}
+
+class Visit {
+  Visit(
+      {this.title = '',
+      required this.siteName,
+      required this.startDate,
+      required this.endDate,
+      this.companions = '',
+      this.journalNotes = ''});
+
+  String title;
+  String siteName;
+  DateTime startDate;
+  DateTime endDate;
+  String companions;
+  String journalNotes;
 }
 
 String dummyText =

@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import '../components/profile_photo_scaffold.dart';
 import '../components/icon_rating_row.dart';
 import '../components/text_area_with_background.dart';
+import './screen_arguments/visit_detail_screen_arguments.dart';
 import '../utility/constants.dart';
 import '../utility/dummy_data.dart';
 
 class VisitDetailScreen extends StatefulWidget {
-  const VisitDetailScreen({Key? key, required this.title}) : super(key: key);
+  const VisitDetailScreen({
+    Key? key,
+  }) : super(key: key);
 
-  final String title;
+  static const String id = 'visitDetail';
 
   @override
   State<VisitDetailScreen> createState() => _VisitDetailScreenState();
@@ -17,8 +20,13 @@ class VisitDetailScreen extends StatefulWidget {
 class _VisitDetailScreenState extends State<VisitDetailScreen> {
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments
+        as VisitDetailScreenArguments;
+
+    final visitData = DummyData.dummyVisits[args.dummmyIndex];
+
     return ProfilePhotoScaffold(
-        title: widget.title,
+        title: args.siteName,
         body: SafeArea(
           child: Center(
             child: Padding(
@@ -48,7 +56,8 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                         'Dates Visited',
                         style: kRowDataDescriptorTextStyle,
                       ),
-                      Text('5/1/2014 - 5/15/2015'),
+                      Text(
+                          '${visitData.startDate.month}/${visitData.startDate.day}/${visitData.startDate.year} - ${visitData.endDate.month}/${visitData.endDate.day}/${visitData.endDate.year}'),
                     ],
                   ),
                   Row(
@@ -58,7 +67,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                         'Traveling Companions',
                         style: kRowDataDescriptorTextStyle,
                       ),
-                      Text('Mom & Amy'),
+                      Text(visitData.companions),
                     ],
                   ),
                   Row(
@@ -68,7 +77,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                         'Journal',
                         style: kRowDataDescriptorTextStyle,
                       ),
-                      Text('Lorem ipsum......'),
+                      Text(visitData.journalNotes),
                     ],
                   ),
                   Row(

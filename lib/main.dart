@@ -21,8 +21,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         canvasColor: Colors.blueGrey.shade50,
       ),
-      home: AddReviewScreen(),
-      //home: VisitDetailScreen(title: 'Visit to Grenada'),
+      initialRoute: ProfileScreen.id,
+      routes: {
+        ProfileScreen.id: (context) => const ProfileScreen(),
+        OfficialListScreen.id: (context) => const OfficialListScreen(),
+        SiteDetailExtractArgumentsScreen.id: (context) =>
+            const SiteDetailExtractArgumentsScreen(),
+        AddReviewScreen.id: (context) => const AddReviewScreen(),
+        AddVisitScreen.id: (context) => const AddVisitScreen(),
+        VisitDetailScreen.id: (context) => const VisitDetailScreen(),
+      },
     );
   }
 }

@@ -2,24 +2,56 @@ import 'package:flutter/material.dart';
 import '../components/profile_photo_scaffold.dart';
 import '../components/icon_rating_row.dart';
 import '../components/text_area_with_background.dart';
+import './screen_arguments/site_detail_screen_arguments.dart';
+import './add_review_screen.dart';
+import './add_visit_screen.dart';
+import './visit_screen.dart';
+import './screen_arguments/visit_detail_screen_arguments.dart';
 import '../utility/dummy_data.dart';
 
-class SiteDetailScreen extends StatefulWidget {
-  const SiteDetailScreen({required this.title});
+class SiteDetailExtractArgumentsScreen extends StatefulWidget {
+  static const String id = 'siteDetails';
 
-  final String title;
+  const SiteDetailExtractArgumentsScreen({Key? key}) : super(key: key);
 
   @override
-  State<SiteDetailScreen> createState() => _SiteDetailScreenState();
+  State<SiteDetailExtractArgumentsScreen> createState() =>
+      _SiteDetailExtractArgumentsScreenState();
 }
 
-class _SiteDetailScreenState extends State<SiteDetailScreen> {
+class _SiteDetailExtractArgumentsScreenState
+    extends State<SiteDetailExtractArgumentsScreen> {
   bool visited = false;
+
+  List<Widget> generateVisits() {
+    List<TextButton> visits = [];
+
+    for (var visit in DummyData.dummyVisits) {
+      TextButton vistButton = TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, VisitDetailScreen.id,
+              arguments: VisitDetailScreenArguments(
+                  title: visit.title,
+                  siteName: visit.siteName,
+                  dummmyIndex: visits.length - 1));
+        },
+        child: Text(
+          visit.title,
+        ),
+      );
+      visits.add(vistButton);
+    }
+
+    return visits;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as SiteDetailScreenArguments;
+
     return ProfilePhotoScaffold(
-      title: widget.title,
+      title: args.title,
       body: SafeArea(
         child: Column(
           children: [
@@ -84,7 +116,7 @@ class _SiteDetailScreenState extends State<SiteDetailScreen> {
                     ],
                   ),
                 ),
-                Text('Location of site'), // Country(s) & Locality
+                Text(args.country), // Country(s) & Locality
                 Padding(
                   padding: const EdgeInsets.only(right: 22.0),
                   child: Column(
@@ -130,23 +162,23 @@ class _SiteDetailScreenState extends State<SiteDetailScreen> {
               'Visits',
               textAlign: TextAlign.center,
             ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  AddVisitScreen.id,
+                  arguments: args,
+                );
+              },
+              child: Text(
+                'Add Visit',
+              ),
+            ),
             Container(
               height: 35.0,
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      'Add Visit',
-                    ),
-                    Text('day/month/year'),
-                    Text(
-                      'month/year',
-                    ),
-                    Text('day/month/year'),
-                    Text(
-                      'month/year',
-                    ),
-                  ],
+                child: Row(
+                  children: generateVisits(),
                 ),
               ),
             ),
@@ -162,7 +194,10 @@ class _SiteDetailScreenState extends State<SiteDetailScreen> {
                     rating: 4,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AddReviewScreen.id,
+                          arguments: args);
+                    },
                     child: Text(
                       'Leave a Review',
                     ),

@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:whs_app_mvp/screens/screen_arguments/site_detail_screen_arguments.dart';
 import '../utility/constants.dart';
 import '../components/visited_site_list_tile.dart';
 import '../components/icon_with_text_button.dart';
+import './official_list_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
+
+  static const String id = 'profile';
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  List<Widget> visitedSites = const [
+    VisitedSiteListTile(
+      siteName: 'Grenada',
+      country: 'Spain',
+    ),
+    VisitedSiteListTile(siteName: 'Paris', country: 'France'),
+    VisitedSiteListTile(siteName: 'Yosemite', country: 'United States'),
+    VisitedSiteListTile(siteName: 'Tian Shan', country: 'China'),
+    VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
+    VisitedSiteListTile(siteName: 'Tian Shan', country: 'China'),
+    VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               Text('Visited'),
                               Text(
-                                '12',
+                                visitedSites.length.toString(),
                                 style: kLargeNumberTextStyle,
                               ),
                               Text('sites total'),
@@ -67,21 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Container(
                 color: Colors.teal.shade100,
                 child: ListView(
-                  children: const [
-                    VisitedSiteListTile(
-                      siteName: 'Grenada',
-                      country: 'Spain',
-                    ),
-                    VisitedSiteListTile(siteName: 'Paris', country: 'France'),
-                    VisitedSiteListTile(
-                        siteName: 'Yosemite', country: 'United States'),
-                    VisitedSiteListTile(
-                        siteName: 'Tian Shan', country: 'China'),
-                    VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
-                    VisitedSiteListTile(
-                        siteName: 'Tian Shan', country: 'China'),
-                    VisitedSiteListTile(siteName: 'Toledo', country: 'Spain'),
-                  ],
+                  children: visitedSites,
                 ),
               ),
             ),
@@ -94,12 +97,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   IconWithTextButton(
                     icon: Icons.public,
                     text: 'Official Site List',
+                    pressAction: () {},
                   ),
                   SizedBox(
                     width: 10.0,
                   ),
                   IconWithTextButton(
-                      icon: Icons.add, text: 'Upload Profile Photo'),
+                    icon: Icons.add,
+                    text: 'Upload Profile Photo',
+                    pressAction: () {},
+                  ),
                 ],
               ),
             ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whs_app_mvp/screens/screen_arguments/site_detail_screen_arguments.dart';
+import '../screens/site_detail_screen.dart';
 
 class VisitedSiteListTile extends StatelessWidget {
   const VisitedSiteListTile(
@@ -35,7 +37,9 @@ class VisitedSiteListTile extends StatelessWidget {
           color: Colors.blueGrey.shade300,
         ),
         onPressed: () {
-          print('icon pressed');
+          Navigator.pushNamed(context, SiteDetailExtractArgumentsScreen.id,
+              arguments:
+                  SiteDetailScreenArguments(title: siteName, country: country));
         },
       ),
       onTap: () {},
